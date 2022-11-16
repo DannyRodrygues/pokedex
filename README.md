@@ -9,7 +9,7 @@
   ->JAVASCRIPT<br>
 
 Conceito aqui e criar junto com o pessoal uma enciclopédia virtual de Pokémons onde são apresentados os seus tipos, nomes e as imagens. Ainda falta terminar, tem ainda ajustes a serem feitos, mas tá ficando bem bacana.<br>
-![logo_html_css](https://user-images.githubusercontent.com/99967967/181364573-2af457e6-92e6-41d1-b89f-88a5b2c3cfc6.png)
+![pinpngs](https://github.com/DannyRodrygues/pokedex/blob/main/POKEDEX/imga/pinpngs.png?raw=true)
 
  ### 📱 | Screenshots:<br>  
  
@@ -23,5 +23,5 @@ Conceito aqui e criar junto com o pessoal uma enciclopédia virtual de Pokémons
 - Beacons: [Dev Dany Rodrigues.](beacons.ai/devdanyrodrigues)
 
 
-
+​![pinpngs](https://github.com/DannyRodrygues/pokedex/blob/main/POKEDEX/imga/pinpngs.png?raw=true)
 
