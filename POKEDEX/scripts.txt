@@ -1,0 +1,350 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pokedex</title>
+      <!-- Normalize CSS -->
+      <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.1/normalize.min.css"
+      integrity="sha512-NhSC1YmyruXifcj/KFRWoC561YpHpc5Jtzgvbuzx5VozKpWvQ+4nXhPdFgmx8xqexRcpAglTj9sIBWINXa8x5w=="
+      crossorigin="anonymous" referrerpolicy="no-referrer" />
+      <link rel="stylesheet" href="\Users\DANIELLA\Documents\BOOTCAMP INTER\JAVASCRIPT\POKEDEX/assets/css/global.css">
+
+      <!-- Font Roboto -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@100;300;500;700&display=swap" rel="stylesheet">
+
+      <!-- Nosso CSS -->
+      <link rel="stylesheet" href="\Users\DANIELLA\Documents\BOOTCAMP INTER\JAVASCRIPT\POKEDEX/assets/css/global.css">
+      <link rel="stylesheet" href="\Users\DANIELLA\Documents\BOOTCAMP INTER\JAVASCRIPT\POKEDEX/assets/css/POKEDEX.css">
+
+    </head>
+
+    <body>
+        <section class="content">
+            <h1>Pokedex</h1>
+    
+            <ol id="pokemonList" class="pokemons">
+                <!-- ..... Pokemons here ..... -->
+            </ol>
+    
+            <div class="pagination">
+                <button id="loadMoreButton" type="button">
+                    Load More
+                </button>
+            </div>
+        </section>
+    
+        <!-- Nosso JS -->
+        <script src="\Users\DANIELLA\Documents\BOOTCAMP INTER\JAVASCRIPT\POKEDEX/assets/js/pokemon-model.js"></script>
+        <script src="\Users\DANIELLA\Documents\BOOTCAMP INTER\JAVASCRIPT\POKEDEX/assets/js/poke-api.js"></script>
+        <script src="\Users\DANIELLA\Documents\BOOTCAMP INTER\JAVASCRIPT\POKEDEX/assets/js/main.js"></script>
+    </body>
+    
+    </html>
+
+
+
+**************************************************************************
+
+global css
+
+* {
+    font-family: 'Roboto', sans-serif;
+    box-sizing: border-box;
+}
+
+body {
+    background-color: #f6f8fc;
+}
+
+.content {
+    width: 100vw;
+    height: 100vh;
+    padding: 1rem;
+    background-color: #fff;
+}
+
+@media screen and (min-width: 992px) {
+    .content {
+        max-width: 992px;
+        height: auto;
+        margin: 1rem auto;
+        border-radius: 1rem;
+    }
+}
+
+***************************************************
+
+main.js
+
+const pokemonList = document.getElementById('pokemonList')
+const loadMoreButton = document.getElementById('loadMoreButton')
+
+const maxRecords = 151
+const limit = 10
+let offset = 0;
+
+function convertPokemonToLi(pokemon) {
+    return `
+        <li class="pokemon ${pokemon.type}">
+            <span class="number">#${pokemon.number}</span>
+            <span class="name">${pokemon.name}</span>
+            <div class="detail">
+                <ol class="types">
+                    ${pokemon.types.map((type) => `<li class="type ${type}">${type}</li>`).join('')}
+                </ol>
+                <img src="${pokemon.photo}"
+                     alt="${pokemon.name}">
+            </div>
+        </li>
+    `
+}
+
+function loadPokemonItens(offset, limit) {
+    pokeApi.getPokemons(offset, limit).then((pokemons = []) => {
+        const newHtml = pokemons.map(convertPokemonToLi).join('')
+        pokemonList.innerHTML += newHtml
+    })
+}
+
+loadPokemonItens(offset, limit)
+
+loadMoreButton.addEventListener('click', () => {
+    offset += limit
+    const qtdRecordsWithNexPage = offset + limit
+
+    if (qtdRecordsWithNexPage >= maxRecords) {
+        const newLimit = maxRecords - offset
+        loadPokemonItens(offset, newLimit)
+
+        loadMoreButton.parentElement.removeChild(loadMoreButton)
+    } else {
+        loadPokemonItens(offset, limit)
+    }
+})
+
+***********************************************************************
+
+pokedex.css
+
+.pokemons {
+    display: grid;
+    grid-template-columns: 1fr;
+    margin: 0;
+    padding: 0;
+    list-style: none;
+}
+
+.normal {
+    background-color: #a6a877;
+}
+
+.grass {
+    background-color: #77c850;
+}
+
+.fire {
+    background-color: #ee7f30;
+}
+
+.water {
+    background-color: #678fee;
+}
+
+.electric {
+    background-color: #f7cf2e;
+}
+
+.ice {
+    background-color: #98d5d7;
+}
+
+.ground {
+    background-color: #dfbf69;
+}
+
+.flying {
+    background-color: #a98ff0;
+}
+
+.poison {
+    background-color: #a040a0;
+}
+
+.fighting {
+    background-color: #bf3029;
+}
+
+.psychic {
+    background-color: #f65687;
+}
+
+.dark {
+    background-color: #725847;
+}
+
+.rock {
+    background-color: #b8a137;
+}
+
+.bug {
+    background-color: #a8b720;
+}
+
+.ghost {
+    background-color: #6e5896;
+}
+
+.steel {
+    background-color: #b9b7cf;
+}
+
+.dragon {
+    background-color: #6f38f6;
+}
+
+.fairy {
+    background-color: #f9aec7;
+}
+
+.pokemon {
+    display: flex;
+    flex-direction: column;
+    margin: .5rem;
+    padding: 1rem;
+    border-radius: 1rem;
+}
+
+.pokemon .number {
+    color: #000;
+    opacity: .3;
+    text-align: right;
+    font-size: .625rem;
+}
+
+.pokemon .name {
+    text-transform: capitalize;
+    color: #fff;
+    margin-bottom: .25rem;
+}
+
+.pokemon .detail {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.pokemon .detail .types {
+    padding: 0;
+    margin: 0;
+    list-style: none;
+}
+
+.pokemon .detail .types .type {
+    color: #fff;
+    padding: .25rem .5rem;
+    margin: .25rem 0;
+    font-size: .625rem;
+    border-radius: 1rem;
+    filter: brightness(1.1);
+    text-align: center;
+}
+
+.pokemon .detail img {
+    max-width: 100%;
+    height: 70px;
+}
+
+.pagination {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    padding: 1rem;
+}
+
+.pagination button {
+    padding: .25rem .5rem;
+    margin: .25rem 0;
+    font-size: .625rem;
+    color: #fff;
+    background-color: #6c79db;
+    border: none;
+    border-radius: 1rem;
+}
+
+@media screen and (min-width: 380px) {
+    .pokemons {
+        grid-template-columns: 1fr 1fr;
+    }
+}
+
+@media screen and (min-width: 576px) {
+    .pokemons {
+        grid-template-columns: 1fr 1fr 1fr;
+    }
+}
+
+@media screen and (min-width: 992px) {
+    .pokemons {
+        grid-template-columns: 1fr 1fr 1fr 1fr;
+    }
+}
+
+
+*-*****************************************************
+
+poke-api.js
+
+const pokeApi = {}
+
+function convertPokeApiDetailToPokemon(pokeDetail) {
+    const pokemon = new Pokemon()
+    pokemon.number = pokeDetail.id
+    pokemon.name = pokeDetail.name
+
+    const types = pokeDetail.types.map((typeSlot) => typeSlot.type.name)
+    const [type] = types
+
+    pokemon.types = types
+    pokemon.type = type
+
+    pokemon.photo = pokeDetail.sprites.other.dream_world.front_default
+
+    return pokemon
+}
+
+pokeApi.getPokemonDetail = (pokemon) => {
+    return fetch(pokemon.url)
+        .then((response) => response.json())
+        .then(convertPokeApiDetailToPokemon)
+}
+
+pokeApi.getPokemons = (offset = 0, limit = 5) => {
+    const url = `https://pokeapi.co/api/v2/pokemon?offset=${offset}&limit=${limit}`
+
+    return fetch(url)
+        .then((response) => response.json())
+        .then((jsonBody) => jsonBody.results)
+        .then((pokemons) => pokemons.map(pokeApi.getPokemonDetail))
+        .then((detailRequests) => Promise.all(detailRequests))
+        .then((pokemonsDetails) => pokemonsDetails)
+}
+
+**********************************************************************
+pokemon-model.js
+
+class Pokemon {
+    number;
+    name;
+    type;
+    types = [];
+    photo;
+}
+
+
