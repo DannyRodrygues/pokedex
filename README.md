@@ -23,5 +23,4 @@ Conceito aqui e criar junto com o pessoal uma enciclopédia virtual de Pokémons
 - Beacons: [Dev Dany Rodrigues.](beacons.ai/devdanyrodrigues)
 
 
-​![pinpngs](https://github.com/DannyRodrygues/pokedex/blob/main/POKEDEX/imga/pinpngs.png?raw=true)
 
