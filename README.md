@@ -11,7 +11,7 @@ O Objetivo deste projeto é de criar uma Pokedex que mostre vários pokemons e c
   ->JAVASCRIPT<br>
 
 
-![pinpngs](https://github.com/DannyRodrygues/pokedex/blob/main/POKEDEX/imga/pinpngs.png?raw=true)
+![pinpngs](https://github.com/DannyRodrygues/pokedex/blob/main/imga/pinpngs.png?raw=true)
 
 ### *=> Composição do Projeto Pronto::*
 
