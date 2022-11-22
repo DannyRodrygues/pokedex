@@ -1,6 +1,6 @@
 # 💻 | Projeto: Pokedex - Desafio DIO.
 
-## Desafio do Bootcamp Orange Tech+ da DIO em parceria com o Inter.![logo_orange_tech](https://github.com/DannyRodrygues/pokedex/blob/main/POKEDEX/imga/logo_orange_tech%20(1).png?raw=true)
+## Desafio do Bootcamp Orange Tech+ da DIO em parceria com o Inter.![logo_orange_tech](https://github.com/DannyRodrygues/pokedex/blob/main/imga/logo_orange_tech%20(1).png?raw=true)
 
 O Objetivo deste projeto é de criar uma Pokedex que mostre vários pokemons e criar uma página que mostre os detalhes do pokemon que foi escolhido.<br>
 
