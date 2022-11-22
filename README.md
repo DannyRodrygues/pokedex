@@ -22,7 +22,7 @@ O Objetivo deste projeto é de criar uma Pokedex que mostre vários pokemons e c
 
  ### 📱 | Screenshots:<br>  
  
- ![divulgacao](https://github.com/DannyRodrygues/pokedex/blob/main/POKEDEX/imga/divulgacao.png?raw=true)
+ ![divulgacao](https://github.com/DannyRodrygues/pokedex/blob/main/imga/divulgacao.png?raw=true)
  
  ### 🔗 Meus Links:
 
